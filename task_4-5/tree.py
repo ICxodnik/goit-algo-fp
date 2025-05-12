@@ -3,14 +3,13 @@ import uuid
 import networkx as nx
 import matplotlib.pyplot as plt
 
-
 class Node:
-    def __init__(self, key, color="skyblue"):
+    def __init__(self, key, color="#cccccc"):
         self.left = None
         self.right = None
         self.val = key
-        self.color = color # Додатковий аргумент для зберігання кольору вузла
-        self.id = str(uuid.uuid4()) # Унікальний ідентифікатор для кожного вузла
+        self.color = color
+        self.id = str(uuid.uuid4())
 
     
 def add_edges(graph, node, pos, x=0, y=0, layer=1):
@@ -41,14 +40,14 @@ def draw_tree(tree_root):
     nx.draw(tree, pos=pos, labels=labels, arrows=False, node_size=2500, node_color=colors)
     plt.show()
 
+if __name__ == "__main__":
+    # Створення дерева
+    root = Node(0)
+    root.left = Node(4)
+    root.left.left = Node(5)
+    root.left.right = Node(10)
+    root.right = Node(1)
+    root.right.left = Node(3)
 
-# Створення дерева
-root = Node(0)
-root.left = Node(4)
-root.left.left = Node(5)
-root.left.right = Node(10)
-root.right = Node(1)
-root.right.left = Node(3)
-
-# Відображення дерева
-draw_tree(root)
+    # Відображення дерева
+    draw_tree(root)
