@@ -74,6 +74,46 @@ class LinkedList:
             current = next_node
         self.head = prev
 
+    def sort(self):
+        self.head = self._merge_sort(self.head)
+
+    def _merge_sort(self, head):
+        if not head or not head.next:
+            return head
+
+        middle = self._get_middle(head)
+        next_to_middle = middle.next
+        middle.next = None
+
+        left = self._merge_sort(head)
+        right = self._merge_sort(next_to_middle)
+
+        return self._sorted_merge(left, right)
+
+    def _get_middle(self, head):
+        if not head:
+            return head
+        slow = head
+        fast = head.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+
+    def _sorted_merge(self, a, b):
+        if not a:
+            return b
+        if not b:
+            return a
+
+        if a.data <= b.data:
+            result = a
+            result.next = self._sorted_merge(a.next, b)
+        else:
+            result = b
+            result.next = self._sorted_merge(a, b.next)
+        return result
+
 if __name__ == "__main__":
     ll = LinkedList()
     ll.insert_at_end(4)
