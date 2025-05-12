@@ -57,3 +57,31 @@ class LinkedList:
             print(cur.data, end=" -> ")
             cur = cur.next
         print("None")
+
+    def reverse(self):
+        prev = None
+        current = self.head
+        while current:
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+        self.head = prev
+
+if __name__ == "__main__":
+    ll = LinkedList()
+    ll.insert_at_end(4)
+    ll.insert_at_end(2)
+    ll.insert_at_end(5)
+    ll.insert_at_end(1)
+
+    print("Оригінальний список:")
+    ll.print_list()
+
+    ll.sort()
+    print("Відсортований список:")
+    ll.print_list()
+
+    ll.reverse()
+    print("Реверсований список:")
+    ll.print_list()
