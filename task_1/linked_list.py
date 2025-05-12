@@ -113,7 +113,24 @@ class LinkedList:
             result = b
             result.next = self._sorted_merge(a, b.next)
         return result
+    
+    @staticmethod
+    def merge_sorted_lists(head1, head2):
+        dummy = Node()
+        tail = dummy
 
+        while head1 and head2:
+            if head1.data <= head2.data:
+                tail.next = head1
+                head1 = head1.next
+            else:
+                tail.next = head2
+                head2 = head2.next
+            tail = tail.next
+
+        tail.next = head1 if head1 else head2
+        return dummy.next
+    
 if __name__ == "__main__":
     ll = LinkedList()
     ll.insert_at_end(4)
@@ -131,3 +148,20 @@ if __name__ == "__main__":
     ll.reverse()
     print("Реверсований список:")
     ll.print_list()
+
+    ll.reverse()
+    print("Реверсований список двічі:")
+    ll.print_list()
+
+    ll2 = LinkedList()
+    ll2.insert_at_end(1)
+    ll2.insert_at_end(6)
+    ll2.insert_at_end(10)
+    ll2.sort()
+
+    merged = LinkedList()
+    merged.head = LinkedList.merge_sorted_lists(ll.head, ll2.head)
+    print("Об'єднаний список:")
+    merged.print_list()
+
+    
