@@ -50,4 +50,4 @@ if __name__ == "__main__":
     root.right.left = Node(3)
 
     # Відображення дерева
-    draw_tree(root)
+    Node.draw_tree(root)
