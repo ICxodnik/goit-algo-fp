@@ -1,1 +1,7 @@
-# goit-algo-fp
+![image](task_7/results/Figure_7.png)
+![image](task_7/results/Figure_6.png)
+![image](task_7/results/Figure_4.png)
+![image](task_4-5/results/Figure_10.png)
+![image](task_4-5/results/Figure_11.png)
+![image](task_2/results/Screenshot%202025-05-12%20at%2022.57.20.png)
+![image](task_2/results/Screenshot%202025-05-12%20at%2022.59.19.png)
